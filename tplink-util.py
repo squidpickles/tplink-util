@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Copyright 2013 Kevin Rauwolf
@@ -115,6 +115,6 @@ if __name__ == '__main__':
         ip, mac, model, description = struct.unpack(kResponseFormat, responses[addr])
         ip = socket.inet_ntoa(ip)
         mac = ':'.join('{:02x}'.format(part) for part in mac)
-        model = model.decode('utf-8')
-        description = description.decode('utf-8')
+        model = model.decode('utf-8', errors='replace')
+        description = description.decode('utf-8', errors='replace')
         print(kReportFormat.format(ip, mac, model, description))
